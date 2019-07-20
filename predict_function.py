@@ -1,5 +1,4 @@
 import numpy as np
-
 import math
 
  
@@ -69,7 +68,7 @@ def score_transform(x):
 
 
 
-def predict(x, model_parameters, tree_limit, format_to_dictionary = True):
+def predict(x, model_parameters, tree_limit, base_score=0 format_to_dictionary=True, transform_score=True):
 
     """Function for prediction of model
 
@@ -92,7 +91,7 @@ def predict(x, model_parameters, tree_limit, format_to_dictionary = True):
     if format_to_dictionary:
         x = format_to_dict(x)
 
-    val = 0
+    val = base_score
 
     for i in range(len(model_parameters)):
         if i == tree_limit:
@@ -111,5 +110,7 @@ def predict(x, model_parameters, tree_limit, format_to_dictionary = True):
                 break
 
         val += node['leaf']
-
-    return score_transform(val)
+    
+    if transform_score:
+        return score_transform(val)
+    return val
