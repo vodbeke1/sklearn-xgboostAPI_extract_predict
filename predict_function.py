@@ -68,7 +68,7 @@ def score_transform(x):
 
 
 
-def predict(x, model_parameters, tree_limit, base_score=0 format_to_dictionary=True, transform_score=True):
+def predict(x, model_parameters, tree_limit, base_score=0, format_to_dictionary=True, transform_score=True):
 
     """Function for prediction of model
 
